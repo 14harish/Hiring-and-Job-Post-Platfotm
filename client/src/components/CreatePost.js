@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function CreatePost() {
-    // const initial = { profile: "", exp: 0, techs: [], desc:"" };
+    
     const [form, setForm] = useState({ profile: "", exp: 0, techs: [], desc:"" });
     
     const skillSet = [
