@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 function CreatePost() {
     
@@ -21,10 +22,21 @@ function CreatePost() {
           name: "Rust"
         }
       ];
-      const handleData=(e)=>{
+      const handleData=async(e)=>{
 
         e.preventDefault();
-        console.log(form)
+        try {
+          
+          await axios.post("http://localhost:8080/AddPost",form,
+          {
+            headers: {
+              "Content-type": "multipart/form-data",
+            },
+          });
+        } catch (error) {
+          console.log("error", error);
+        }
+        
       }
   return (
     <div>
