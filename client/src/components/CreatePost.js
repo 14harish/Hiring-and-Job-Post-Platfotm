@@ -44,15 +44,15 @@ function CreatePost() {
         <form>
             <div>
                 <label>Job Profile:</label>
-                <input type="text" name="job_profile" value={form.profile} onChange={(e) => setForm({ ...form, profile: e.target.value })}/>
+                <input className="border-2" type="text" name="job_profile" value={form.profile} onChange={(e) => setForm({ ...form, profile: e.target.value })}/>
             </div>
             <div>
                 <label>Year of Experience</label>
-                <input type="number"  name="yeer_exp" value={form.exp} onChange={(e) => setForm({ ...form, exp: e.target.value })}/>
+                <input className="border-2" type="number"  name="yeer_exp" value={form.exp} onChange={(e) => setForm({ ...form, exp: e.target.value })}/>
             </div>
             <div>
                 <label>Job Descrption</label>
-                <input type="text" name="description" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })}/>
+                <input className="border-2" type="text" name="description" value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })}/>
             </div>
             {skillSet.map(({ name }, index) => {
           return (
