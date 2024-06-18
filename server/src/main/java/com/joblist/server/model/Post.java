@@ -9,17 +9,17 @@ public class Post {
     private String desc;
     private int exp;
     private String techs[];
-    private int No;
+    private int no;
 
 
 
 
-    public int getNo() {
-        return this.No;
+  public int getNo() {
+        return no;
     }
 
-    public void setNo(int No) {
-        this.No = No;
+    public void setNo(int no) {
+        this.no = no;
     }
 
    

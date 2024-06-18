@@ -33,10 +33,16 @@ public class PostController {
     @PostMapping("/AddPost")
     // @CrossOrigin
     public Post addPost(@RequestBody Post post){
-        System.out.println(post.getNo());
+        // System.out.println(post.getNo());
+        // System.out.println(post.getExp());
         return repo.save(post);
     }
     
+    @GetMapping("/postCount")
+    public long countPost(){
+        return repo.count();
+    }
+
     @GetMapping("/posts/{text}")
     // @CrossOrigin
     public List<Post> search(@PathVariable String text)
@@ -46,9 +52,9 @@ public class PostController {
 
     @DeleteMapping("/posts/{text}")
     // @CrossOrigin
-    public void deleteByProfile(@PathVariable String text){
+    public void deleteByProfile(@PathVariable int text){
         System.out.println(text);
-        repo.deleteByProfile(text);
+        repo.deleteByNo(text);
     }
 
 }

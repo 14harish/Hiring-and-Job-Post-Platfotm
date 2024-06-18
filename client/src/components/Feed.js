@@ -11,6 +11,7 @@ function Feed() {
       const res=await axios.get('http://localhost:8080/ViewPost')
       console.log(res.data);
       setPost(res.data);
+
     }
     const search=async()=>{
       const res=await axios.get(`http://localhost:8080/posts/${query}`)
@@ -24,10 +25,12 @@ function Feed() {
       if(query.length === 0) fetchAll();
       fetchAll();
     },[query])
-    const handleDelete=async(profile)=>{
+
+    
+    const handleDelete=async(no)=>{
       try{
-        console.log(profile)
-        await axios.delete(`http://localhost:8080/posts/${profile}`)
+        console.log(no)
+        await axios.delete(`http://localhost:8080/posts/${no}`)
         fetchAll();
       }
       catch(e){
@@ -60,7 +63,7 @@ function Feed() {
                     })
                   }
                   <button className='border-2 border-black m-2 p-2'>Edit</button>
-                  <button className='border-2 border-black p-2' onClick={()=>{handleDelete(data.profile)}}>Delete</button>
+                  <button className='border-2 border-black p-2' onClick={()=>{handleDelete(data.no)}}>Delete</button>
                 </div>
               )
             }
