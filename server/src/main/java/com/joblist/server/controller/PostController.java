@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.joblist.server.services.PostRepository;
 import com.joblist.server.services.SearchRepository;;
 
 @RestController
+@CrossOrigin
 public class PostController {
 
     @Autowired
@@ -23,21 +25,30 @@ public class PostController {
     SearchRepository srepo;
 
     @GetMapping("/ViewPost")
-    @CrossOrigin
+    // @CrossOrigin
     public List<Post> getAllPosts(){
         return repo.findAll();
     }
+
     @PostMapping("/AddPost")
-    @CrossOrigin
+    // @CrossOrigin
     public Post addPost(@RequestBody Post post){
-        System.out.println(post);
+        System.out.println(post.getNo());
         return repo.save(post);
     }
+    
     @GetMapping("/posts/{text}")
-    @CrossOrigin
+    // @CrossOrigin
     public List<Post> search(@PathVariable String text)
     {
         return srepo.findByText(text);
+    }
+
+    @DeleteMapping("/posts/{text}")
+    // @CrossOrigin
+    public void deleteByProfile(@PathVariable String text){
+        System.out.println(text);
+        repo.deleteByProfile(text);
     }
 
 }

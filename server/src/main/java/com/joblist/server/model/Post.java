@@ -9,6 +9,21 @@ public class Post {
     private String desc;
     private int exp;
     private String techs[];
+    private int No;
+
+
+
+
+    public int getNo() {
+        return this.No;
+    }
+
+    public void setNo(int No) {
+        this.No = No;
+    }
+
+   
+
 
     public String getProfile() {
         return this.profile;

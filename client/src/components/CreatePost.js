@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function CreatePost() {
     
-    const [form, setForm] = useState({ profile: "", exp: 0, techs: [], desc:"" });
+    const [form, setForm] = useState({ profile: "", exp: 0, techs: [], desc:"", No:0 });
     
     const skillSet = [
         {
@@ -26,11 +26,14 @@ function CreatePost() {
 
         e.preventDefault();
         try {
-          
-          await axios.post("http://localhost:8080/AddPost",form,
+          const res=await axios.get('http://localhost:8080/ViewPost')
+          const updatedForm = { ...form, No: (res.data.length) + 1 };
+          setForm(updatedForm);
+          console.log(updatedForm);
+          const response = await await axios.post("http://localhost:8080/AddPost",updatedForm,
           {
             headers: {
-              "Content-type": "multipart/form-data",
+              'Content-Type': 'application/json',
             },
           });
         } catch (error) {

@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.joblist.server.model.Post;
 
 public interface PostRepository extends MongoRepository<Post,String>{
-
+    long deleteByProfile(String name);
 }
