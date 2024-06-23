@@ -22,7 +22,7 @@ import com.mongodb.client.result.UpdateResult;
 
 @Component
 public class PostExtrsFunctionImp implements PostExtraFunctions {
-     @Autowired
+    @Autowired
     MongoClient client;
 
     @Autowired
