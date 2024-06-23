@@ -1,6 +1,8 @@
 package com.joblist.server.model;
 
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Document(collection = "JobPost")
 public class Post {
@@ -9,6 +11,8 @@ public class Post {
     private String desc;
     private int exp;
     private String techs[];
+
+    @Indexed(unique = true)
     private int no;
 
 

@@ -5,11 +5,25 @@ function CreatePost() {
   const [form, setForm] = useState({ profile: "", exp: 0, techs: [], desc: "", no: 0 }); // Change 'No' to 'no'
 
   const skillSet = [
-    { name: "Javascript" },
-    { name: "Java" },
-    { name: "Python" },
-    { name: "Django" },
-    { name: "Rust" }
+    { name: "javascript" },
+      { name: "java" },
+      { name: "python" },
+      { name: "django" },
+      { name: "microservices" },
+      { name: "hadoop" },
+      { name: "bigdata" },
+      { name: "numpy" },
+      { name: "pandas" },
+      { name: "c" },
+      { name: "c++" },
+      { name: "matplotlib" },
+      { name: "springboot" },
+      { name: "cloud" },
+      { name: "jee" },
+      { name: "spring" },
+      { name: "AWZ" },
+      { name: "Azure" },
+      { name: "devops" },
   ];
 
   const handleCheckboxChange = (e) => {
