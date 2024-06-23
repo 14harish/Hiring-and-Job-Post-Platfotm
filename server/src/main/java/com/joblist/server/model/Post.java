@@ -16,8 +16,6 @@ public class Post {
     private int no;
 
 
-
-
   public int getNo() {
         return no;
     }

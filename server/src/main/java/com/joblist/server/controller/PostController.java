@@ -2,7 +2,6 @@ package com.joblist.server.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,8 +42,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{text}")
-    public List<Post> search(@PathVariable String text)
-    {
+    public List<Post> search(@PathVariable String text){
         return erepo.findByText(text);
     }
 
