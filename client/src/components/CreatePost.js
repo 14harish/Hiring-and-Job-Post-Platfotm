@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function CreatePost() {
-  const [form, setForm] = useState({ profile: "", exp: 0, techs: [], desc: "", no: 0 }); // Change 'No' to 'no'
-
+  const [form, setForm] = useState({ profile: "", exp: 0, techs: [], desc: "", no: 0 ,photo:""}); // Change 'No' to 'no'
+  const [photoVal,setPhoto]=useState(null);
   const skillSet = [
     { name: "javascript" },
       { name: "java" },
@@ -40,20 +40,27 @@ function CreatePost() {
   const handleData = async (e) => {
     e.preventDefault();
     try {
-      
       const res = await axios.get('http://localhost:8080/postCount');
-      console.log('Number of posts:', res.data);
+      const updatedForm = { ...form, no: res.data + 1 };
 
-      const updatedForm = { ...form, no: (res.data) + 1 }; // Change 'No' to 'no'
-      console.log('Updated form data:', updatedForm);
+      const formData = new FormData();
+      // formData.append('profile', updatedForm.profile);
+      // formData.append('exp', updatedForm.exp);
+      // formData.append('techs', updatedForm.techs);
+      // formData.append('desc', updatedForm.desc);
+      // formData.append('no', updatedForm.no);
+      // formData.append('post', JSON.stringify(updatedForm)); // Add JSON data as a string
+      formData.append('post', new Blob([JSON.stringify(updatedForm)], { type: 'application/json' })); // Add JSON data as a Blob
+      formData.append('photo', photoVal);
 
-      setForm(updatedForm);
 
-      const response = await axios.post('http://localhost:8080/AddPost', updatedForm, {
+      const response = await axios.post('http://localhost:8080/AddPost', formData, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
+        // data: updatedForm // Send other form data as JSON
       });
+      
       console.log('Post response:', response.data);
 
     } catch (error) {
@@ -93,6 +100,18 @@ function CreatePost() {
             name="description"
             value={form.desc}
             onChange={(e) => setForm({ ...form, desc: e.target.value })}
+          />
+        </div>
+        <div>
+          <label>Photo</label>
+          <input
+            className="border-2"
+            type="file"
+            name="description"
+            // value={form.photo}
+            alt='photo'
+            // onChange={(e) => setForm({ ...form, photo: e.target.files[0] })}
+            onChange={(e) => setPhoto(e.target.files[0])}
           />
         </div>
         <ul>

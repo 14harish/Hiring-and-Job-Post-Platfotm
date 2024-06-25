@@ -6,6 +6,7 @@ function Feed() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [post, setPost] = useState([]);
+  // const [photo, setphoto] = useState([]);
   const [openModal, setOpenModal] = useState(null);
 
   const fetchAll = async () => {
@@ -42,6 +43,7 @@ function Feed() {
       techs: person.techs,
       desc: person.desc,
       no: person.no,
+      photo:person.photo,
     }); // Change 'No' to 'no'
     const skillSet = [
       { name: "javascript" },
@@ -91,6 +93,11 @@ function Feed() {
       <div>
         <div className="p-5 border-2 max-w-96">
           <h2 className="font-bold">{person.profile}</h2>
+          <img
+              src={`http://localhost:8080/getImage/${person.photo}`}
+              alt="Profile"
+              className="max-w-full h-auto"
+            />
           <p>{person.desc}</p>
           <p>Exp: {person.exp}</p>
           <ul>
@@ -152,6 +159,13 @@ function Feed() {
                 <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                   Hello {person.profile}
                 </p>
+                <div className="mt-4">
+            <img
+              src={`http://localhost:8080/getImage/${person.photo}`}
+              alt="Profile"
+              className="max-w-full h-auto"
+            />
+          </div>
                 <div>
                   <label className="text-white">Profile: </label>
                   <input

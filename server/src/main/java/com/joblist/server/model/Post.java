@@ -1,19 +1,59 @@
 package com.joblist.server.model;
-
+import org.bson.types.Binary;
+// import org.bson.types.Binary;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+// import org.springframework.web.multipart.MultipartFile;
 
 
-@Document(collection = "JobPost")
+@Document(collection = "JobPost3")
 public class Post {
 
+    @Indexed(unique = true)
+    private int no;
     private String profile;
     private String desc;
     private int exp;
     private String techs[];
 
-    @Indexed(unique = true)
-    private int no;
+    private String photo;  
+    public String getPhoto() {
+        return this.photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+  
+
+    // public String getPhoto() {
+    //     return this.photo;
+    // }
+
+    // public void setPhoto(String photo) {
+    //     this.photo = photo;
+    // }
+    // private MultipartFile photo;
+
+ 
+    // public MultipartFile getPhoto() {
+    //     return this.photo;
+    // }
+
+    // public void setPhoto(MultipartFile photo) {
+    //     this.photo = photo;
+    // }
+
+   
+    // public String getPhoto() {
+    //     return this.photo;
+    // }
+
+    // public void setPhoto(String photo) {
+    //     this.photo = photo;
+    // }
+
 
 
   public int getNo() {
